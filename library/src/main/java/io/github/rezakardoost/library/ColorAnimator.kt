@@ -1,5 +1,6 @@
 package io.github.rezakardoost.library
 
+
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.os.Handler
@@ -13,11 +14,14 @@ class ColorAnimator private constructor(val colors:Array<Int>) {
     private var colorAnimatorUpdateListener:ColorAnimatorUpdateListener? = null
     private val valueAnimator = ValueAnimator()
     private var onPauseState = false
+    private var onDelayState = false
 
     private val handler = Handler()
 
     val runnable =  object : Runnable {
         override fun run() {
+
+            onDelayState = false
 
             if (!repeatMode && currentColorIndex+1 == colors.size){
                 return
@@ -28,12 +32,14 @@ class ColorAnimator private constructor(val colors:Array<Int>) {
             valueAnimator.duration = animationDuration
             valueAnimator.addUpdateListener {
                 colorAnimatorUpdateListener?.onColorUpdate(it.animatedValue as Int)
+
+                if (!onDelayState && colors[currentColorIndex+1] == it.animatedValue as Int){
+                    onDelayState = true
+                    currentColorIndex++
+                    handler.postDelayed(this,delayDuration)
+                }
             }
             valueAnimator.start()
-
-            currentColorIndex++
-
-            handler.postDelayed(this,delayDuration)
         }
 
     }
@@ -87,7 +93,7 @@ class ColorAnimator private constructor(val colors:Array<Int>) {
         }
     }
 
-    public interface ColorAnimatorUpdateListener{
+    interface ColorAnimatorUpdateListener{
         fun onColorUpdate(color:Int)
     }
 }
