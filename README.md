@@ -11,3 +11,6 @@ ColorAnimator is a color transition animation library for android
 <img src="https://github.com/RezaKardoost/ColorAnimator/blob/master/shots/device20181121235134.gif" width="200"/>
   </a>
 </tr></table></div>
+
+## How it Works
+
