@@ -42,7 +42,7 @@ dependencies {
 ```kotlin
 var ca: ColorAnimator? = null
 
-//colors array
+//colors array.add any colors you want
 val colors = arrayOf(Color.parseColor("#8adcd3")
                 ,Color.parseColor("#74b9ff")
                 ,Color.parseColor("#a29bfe"))
