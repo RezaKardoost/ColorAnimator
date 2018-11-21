@@ -63,3 +63,7 @@ ca?.pause()
 ca?.resume()
 
 ```
+
+# License
+
+[Apache-2](https://github.com/RezaKardoost/ColorAnimator/blob/master/LICENSE)
