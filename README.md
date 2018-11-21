@@ -14,3 +14,4 @@ ColorAnimator is a color transition animation library for android
 
 ## How it Works
 
+|firstColor|----delayTime----|transitToSecondColor|----delayTime----|transitToThirdColor| ...
