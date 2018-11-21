@@ -42,6 +42,8 @@ dependencies {
 ```kotlin
 var ca: ColorAnimator? = null
 
+...
+
 //onCreateView
 ca = ColorAnimator.Builder(colors)
                 .setAnimationDuration(5000)
@@ -54,10 +56,14 @@ ca = ColorAnimator.Builder(colors)
 
                 })
                 .build()
-        ca?.start()
+ ca?.start()
+ 
+ ...
 
 //onPause
 ca?.pause()
+
+...
 
 //onResume
 ca?.resume()
