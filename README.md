@@ -15,3 +15,24 @@ ColorAnimator is a color transition animation library for android
 ## How it Works
 
 |firstColor|----delayTime----|transitToSecondColor|----delayTime----|transitToThirdColor| ...
+
+# Setup
+#### Step #1. Add the JitPack repository to root build.gradle file:
+
+```gradle
+allprojects {
+    repositories {
+	...
+	maven { url "https://jitpack.io" }
+    }
+}
+```
+
+#### Step #2. Add the dependency
+
+```groovy
+dependencies {
+    implementation 'com.github.RezaKardoost:ColorAnimator:v1.1'
+
+}
+```
