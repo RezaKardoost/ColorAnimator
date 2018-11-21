@@ -44,6 +44,7 @@ class ColorAnimator private constructor(val colors:Array<Int>) {
 
                 if (!onDelayState && colors[destinationColorIndex] == it.animatedValue as Int){
                     onDelayState = true
+                    valueAnimator.removeAllUpdateListeners()
 
                     currentColorIndex = if (currentColorIndex == colors.size-1){
                         0
