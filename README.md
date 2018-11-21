@@ -42,6 +42,11 @@ dependencies {
 ```kotlin
 var ca: ColorAnimator? = null
 
+//colors array
+val colors = arrayOf(Color.parseColor("#8adcd3")
+                ,Color.parseColor("#74b9ff")
+                ,Color.parseColor("#a29bfe"))
+
 ...
 
 //onCreateView
