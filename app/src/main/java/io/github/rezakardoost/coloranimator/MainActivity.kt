@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         ca = ColorAnimator.Builder(colors)
                 .setAnimationDuration(5000)
                 .setDelayDuration(10000)
+                .setRepeatMode(true)
                 .addColorUpdateListener(object : ColorAnimator.ColorAnimatorUpdateListener{
                     override fun onColorUpdate(color: Int) {
                         findViewById<ConstraintLayout>(R.id.container).setBackgroundColor(color)

@@ -21,21 +21,35 @@ class ColorAnimator private constructor(val colors:Array<Int>) {
     val runnable =  object : Runnable {
         override fun run() {
 
+            val destinationColorIndex:Int
+
             onDelayState = false
 
-            if (!repeatMode && currentColorIndex+1 == colors.size){
-                return
+
+            destinationColorIndex = if (currentColorIndex+1 == colors.size){
+                if(!repeatMode){
+                    return
+                }else{
+                    0
+                }
+            }else{
+                currentColorIndex+1
             }
 
-            valueAnimator.setIntValues(colors[currentColorIndex],colors[currentColorIndex+1])
+            valueAnimator.setIntValues(colors[currentColorIndex],colors[destinationColorIndex])
             valueAnimator.setEvaluator(ArgbEvaluator())
             valueAnimator.duration = animationDuration
             valueAnimator.addUpdateListener {
                 colorAnimatorUpdateListener?.onColorUpdate(it.animatedValue as Int)
 
-                if (!onDelayState && colors[currentColorIndex+1] == it.animatedValue as Int){
+                if (!onDelayState && colors[destinationColorIndex] == it.animatedValue as Int){
                     onDelayState = true
-                    currentColorIndex++
+
+                    currentColorIndex = if (currentColorIndex == colors.size-1){
+                        0
+                    }else{
+                        currentColorIndex+1
+                    }
                     handler.postDelayed(this,delayDuration)
                 }
             }
